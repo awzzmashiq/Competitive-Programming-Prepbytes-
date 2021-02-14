@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+#define ll long long
+ll a[100010];
+int main() {
+	int t;
+	scanf("%d",&t);
+	while(t--) {
+	  ll n;
+	  scanf("%lld",&n);
+	  ll sum=0,x=1;
+	  while(sum<n){
+	  	sum+=x;
+	  	x=x*3;
+	  }
+	  printf("%lld\n",sum);
+	  printf("%lld\n",x);
+	  while(x){
+	  	if(sum-x>=n)
+	  	sum-=x;
+	  	x=x/3;
+	  	printf("x=%lld\n",x);
+	  	printf("sum=%lld\n",sum);
+	  }
+	  printf("%lld\n",x);
+	  printf("%lld\n",sum);
+	}
+	return 0;
+}

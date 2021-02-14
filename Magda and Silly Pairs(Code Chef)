@@ -1,0 +1,52 @@
+import java.io.*;
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    int t=sc.nextInt();
+	    while(t-->0)
+	    {
+	        int n=sc.nextInt();
+	        int []a=new int[n];
+	        int []b=new int[n];
+	        int []c=new int[n];
+	        int []d=new int[n];
+	        for(int i=0;i<n;i++)
+	         a[i]=sc.nextInt();
+	        for(int i=0;i<n;i++)
+	         b[i]=sc.nextInt();
+	         int j=0;
+	         int k=n-1;
+	        for(int i=0;i<n;i++)
+	        {
+	            if(a[i]%2==0)
+	             c[j++]=a[i];
+	            if(a[i]%2==1)
+	             c[k--]=a[i]; 
+	        }
+	        /*for(int i=0;i<n;i++)
+	         System.out.print(c[i]+" ");*/
+	         
+	         j=0;
+	         k=n-1;
+	         for(int i=0;i<n;i++)
+	        {
+	            if(b[i]%2==0)
+	             d[j++]=b[i];
+	            if(b[i]%2==1)
+	             d[k--]=b[i]; 
+	        }
+	        /*for(int i=0;i<n;i++)
+	         System.out.print(d[i]+" ");*/
+	        int sum=0; 
+	        for(int i=0;i<n;i++)
+	        {
+	            sum=sum+(c[i]+d[i])/2;
+	        }
+	        System.out.println(sum);
+	        //System.out.println("Hello World");
+	    }
+		//System.out.println("Hello World");
+	}
+}

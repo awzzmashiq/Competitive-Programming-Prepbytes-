@@ -1,0 +1,130 @@
+Bank Manager
+Gaurav work in a bank and one-day bank manager gave him a character P which is already printed and told him to print character P exactly 
+N
+ times. The bank manager told Gaurav, you are allowed to perform only these operations.
+1. Copy All – This operation will copy all the printed characters.
+2. Paste – This operation will paste all the characters which are already copied.
+Gaurav asks you for help to print character P exactly 
+N
+ times with the minimum number of operations.
+
+Input Format
+The first line contains an integer 
+T
+ denoting the number of test cases.
+Each test cases contain an integer 
+N
+.
+
+Output Format
+Print the minimum number of operations required.
+
+Constraints
+1
+≤
+T
+≤
+10
+ ​
+1
+≤
+N
+≤
+10
+9
+
+Time Limit
+1
+ ​secon
+
+Example
+Input
+1
+6
+
+Output
+5
+
+Sample test case explanation
+N
+=
+6
+
+Option 
+1
+:
+1. Copy All – this will copy P
+2. Paste – output PP
+3. Paste – output PPP
+4. Paste – output PPPP
+5. Paste – output PPPPP
+6. Paste – output PPPPPP
+Total operations – 
+6
+
+Option 
+2
+:
+1. Copy All – this will copy P
+2. Paste – output PP
+3. Paste – output PPP
+4. Copy All
+5. Paste – output PPPPPP
+Total operations – 
+5
+
+Since with option 
+2
+, the task is done in 
+5
+ operations. Minimum operations – 
+5
+.
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      int t;
+      Scanner sc=new Scanner(System.in);
+      t=sc.nextInt();
+      while(t-->0)
+      {
+        int n,value=0;
+        n=sc.nextInt();
+        if(n==1)
+        {
+          System.out.println(0);
+        }
+        else
+        {
+          for(int i=2;i<=n;i++)
+          {
+            if(n==1)
+             break;
+            while(n%i==0)
+            {
+              value=value+i;
+              n=n/i;
+            }
+          }
+          System.out.println(value);
+        }
+      }
+      
+    }
+  }
