@@ -1,3 +1,3 @@
 # Competitive-Programming
-Solutions for Problems that I have come across.
+Java Solutions for Problems that I have come across.
 
