@@ -1,0 +1,43 @@
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int t=sc.nextInt();
+      while(t-->0)
+      {
+       String s1=sc.next();
+       int n=s1.length();
+       int flag=0;
+       for(int i=0;i<n;i++)
+       {
+         if(i==n-1)
+          continue;
+         if(s1.charAt(i)>=65 && s1.charAt(i)<=90 || s1.charAt(i)>=97 && s1.charAt(i)<=122)
+          {
+              //System.out.println(flag);
+            if(s1.charAt(i)=='N'||s1.charAt(i)=='A' ||s1.charAt(i)=='E'||s1.charAt(i)=='I'||s1.charAt(i)=='O'||s1.charAt(i)=='U'||s1.charAt(i)=='a' ||s1.charAt(i)=='e'||s1.charAt(i)=='i'||s1.charAt(i)=='o'||s1.charAt(i)=='u'||s1.charAt(i)=='n')
+              continue;
+            else
+              {
+                 //System.out.println(s1.charAt(i));
+                if(s1.charAt(i+1)=='A' ||s1.charAt(i+1)=='E'||s1.charAt(i+1)=='I'||s1.charAt(i+1)=='O'||s1.charAt(i+1)=='U'||s1.charAt(i+1)=='a' ||s1.charAt(i+1)=='e'||s1.charAt(i+1)=='i'||s1.charAt(i+1)=='o'||s1.charAt(i+1)=='u')
+                 continue;
+                else
+                {
+                  flag=1;
+                  break;
+                } 
+              }
+           }
+        }
+        if(flag==0)
+         System.out.println("YES");
+        if(flag==1)
+         System.out.println("NO");
+      }
+      
+    }
+  }

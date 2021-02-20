@@ -1,0 +1,94 @@
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int t=sc.nextInt();
+      while(t-->0)
+      {
+        int n=sc.nextInt();
+        String cmp="";
+        boolean flag=true;
+        sc.nextLine();
+        ArrayList<String> list=new ArrayList<String>();
+        for(int i=0;i<n;i++)
+        {
+         String str=sc.nextLine();  
+         list.add(str);
+        }
+        int min=100000,opn=0,count=0,ithcount=100000,tempo=0;
+        for(int i=0;i<n;i++)
+        {
+          opn=0;
+          String s1=list.get(i);
+          System.out.println("inside i loop "+s1);
+          for(int j=0;j<n;j++)
+          {
+              System.out.println("i= "+i+"j= "+j);
+            count=0;
+            if(i==j)
+             continue;
+            
+              if(s1.equals(list.get(j)))
+              {
+                count=count;
+              }
+              else
+              {System.out.println("inside j loop "+s1+" "+list.get(j));
+                for(int k=0;k<s1.length();k++)
+                 {
+                    if(k==0) 
+                    cmp=list.get(i); 
+                    StringBuilder sb = new StringBuilder(cmp);
+                    char temp=sb.charAt(0);
+                    sb.deleteCharAt(0);
+                    sb.append(temp);
+                    System.out.println(s1+" "+sb);
+                    ++count;
+                    cmp=sb.toString();
+                    flag=cmp.equals(list.get(j));
+                    if(cmp.equals(list.get(j)))
+                     break;
+                    if(count==s1.length()-1 &&flag==false)
+                    {
+                     count=0;
+                     break;
+                    }
+                
+                  }
+                  
+              }
+            
+            if(count==0)
+            {
+             break; 
+            }
+            if(tempo!=count)
+            {
+              opn=tempo+count;
+              tempo=count;
+            }
+          }
+          if(count==0)
+            {
+             break; 
+            }
+          if(ithcount>=opn)
+           ithcount=opn;  
+            
+        }
+        if(ithcount==100000 && flag==true)
+        {
+            System.out.println(0);
+        }
+        else if(flag==true && ithcount!=100000)
+         System.out.println(ithcount);
+        
+        else
+         System.out.println(-1);
+      }
+      
+    }
+  }

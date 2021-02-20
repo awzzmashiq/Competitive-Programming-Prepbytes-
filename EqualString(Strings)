@@ -1,0 +1,100 @@
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int t=sc.nextInt();
+      while(t-->0)
+      {
+        int n=sc.nextInt();
+        String cmp="";
+        boolean flag=true;
+        sc.nextLine();
+        ArrayList<String> list=new ArrayList<String>();
+        for(int i=0;i<n;i++)
+        {
+         String str=sc.nextLine();  
+         list.add(str);
+        }
+        int min=100000,op=0;
+        //System.out.println("list size= "+list.size());
+        for(int i=0;i<n;i++)
+        {
+          //char arr[]=list.get(i).toCharArray();
+          String s1=list.get(i);
+          //System.out.println("inside i loop "+s1);
+          op=0;
+          for(int j=0;j<n;j++)
+          {
+            //System.out.println("i= "+i+"j= "+j);  
+            if(i==j)
+             continue;
+            
+            else if(s1.equals(list.get(j)))
+            {
+               op=op;
+            }
+            else
+            {//System.out.println("inside j loop "+s1+" "+list.get(j));
+             op=0;
+             for(int k=0;k<s1.length();k++)
+             {
+                 //System.out.println("inside K loop");
+                if(k==0) 
+                 cmp=list.get(i); 
+                StringBuilder sb = new StringBuilder(cmp);
+                //System.out.println(s1+" "+list.get(j));
+                /*if(cmp.equals(list.get(j)))
+                 break;*/
+                char temp=sb.charAt(0);
+                sb.deleteCharAt(0);
+                sb.append(temp);
+                ++op;
+                cmp=sb.toString();
+                flag=cmp.equals(list.get(j));
+                if(cmp.equals(list.get(j)))
+                 break;
+                 if(op==s1.length()-1 &&flag==false)
+                 {
+                     op=0;
+                     break;
+                 }
+                
+             }
+              if(op==0)
+              {
+               //System.out.println(-1);
+               break;
+              }
+          
+              if(min>op)
+               min=op;
+                
+            }
+            
+          }
+          //System.out.println(op);
+          if(op==0)
+          {
+              //System.out.println(-1);
+              break;
+          }
+          
+          if(min>op)
+             min=op;
+        }
+        if(min==100000 && flag==true)
+        {
+            System.out.println(0);
+        }
+        else if(flag==true && min!=100000)
+         System.out.println(min);
+        
+        else
+         System.out.println(-1);
+      }
+      
+    }
+  }
