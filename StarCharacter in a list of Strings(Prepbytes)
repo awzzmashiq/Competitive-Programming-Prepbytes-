@@ -1,0 +1,57 @@
+import java.util.*;
+  import java.io.*;
+  import java.lang.Math;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int t=sc.nextInt();
+      while(t-->0)
+      {
+        int n=sc.nextInt();
+        String str[]=new String[n];
+        sc.nextLine();
+        for(int i=0;i<n;i++)
+        {
+          str[i]=sc.nextLine();
+        }
+        int [][]count=new int[101][26];//to have freq of all strings of String array
+        for(int i=0;i<n;i++)
+        {
+          for(int j=0;j<str[i].length();j++)
+          {
+            count[i][str[i].charAt(j)-97]++;
+          }
+        }
+        /*for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<26;j++)
+             System.out.print(count[i][j]+" ");
+          System.out.print('\n');     
+        }*/
+        int comn=0;
+        //to check all charcaters count in each string
+        for(int i=0;i<26;i++)
+        {
+          int k=Integer.MAX_VALUE;
+          for(int j=0;j<n;j++)
+          {
+            if(count[j][i]==0)
+            {
+              k=-1;
+              break;
+            }
+            k=Math.min(k,count[j][i]);
+          }
+          //System.out.print(" k= "+k);
+          if(k>0)
+          {
+            comn++;
+          }
+        }
+        System.out.println(comn);
+      }
+      
+    }
+  }
