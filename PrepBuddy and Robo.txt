@@ -1,0 +1,43 @@
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int t=sc.nextInt();
+      while(t-->0)
+      {
+        int n=sc.nextInt();
+        int count=0,temp=n;
+        while(temp>0)
+        {
+          count++;
+          temp=temp/10;
+        }
+        //System.out.println(count);
+        int []a=new int[count];
+        int k=0,flag=0;
+        while(n>0)
+        {
+          a[k++]=n%10;
+          n=n/10;
+        }
+        //Arrays.toString(a);
+        Arrays.sort(a);
+        for(int i=0;i<count-1;i++)
+        {
+          if(a[i+1]!=a[i]+1)
+          {
+            flag=1;
+            break;
+          }
+        }
+        if(flag==0)
+         System.out.println("YES");
+        else
+         System.out.println("NO");
+      }
+      
+    }
+  }

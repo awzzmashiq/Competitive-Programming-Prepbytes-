@@ -1,0 +1,40 @@
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      Scanner sc=new Scanner(System.in);
+      int n=sc.nextInt();
+      int k=sc.nextInt();
+      int []a=new int[n+1];
+      for(int i=1;i<=n;i++)
+       a[i]=sc.nextInt();
+      int mid=(n+1)/2;
+      int count=1;
+      int opn=0;
+      Arrays.sort(a);
+      while(opn<=k && mid<=n-1)
+      {
+        int diff=a[mid+1]-a[mid];
+        if(opn+diff*count<=k)
+        {
+          opn=opn+diff*count;
+          a[mid]=a[mid+1];
+          mid++;
+          count++;
+        }
+        else
+        {
+          break;
+        }
+      }
+      if(opn<=k)
+      {
+        int opnleft=k-opn;
+        a[mid]=a[mid]+opnleft/count;
+      }
+      System.out.println(a[mid]); 
+      
+      
+    }
+  }

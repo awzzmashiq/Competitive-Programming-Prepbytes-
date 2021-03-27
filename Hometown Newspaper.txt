@@ -1,0 +1,56 @@
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int t=sc.nextInt();
+      while(t-->0)
+      {
+        int n=sc.nextInt();
+        int []Homearr=new int[100000];
+        int []Awayarr=new int[100000];
+        int []index=new int[100000];
+        String []str=new String[100000];
+        int home=0,away=0;
+        for(int i=0;i<n;i++)
+        {
+          str[i]=sc.next();
+          int priority=sc.nextInt();
+          int d=sc.nextInt();
+          if(d==1)
+           Homearr[home++]=priority;
+          else
+           Awayarr[away++]=priority;
+          index[priority]=i; 
+        }
+       // System.out.println(Arrays.toString(str));
+        if(home>0)
+        Arrays.sort(Homearr);
+        //System.out.println(Arrays.toString(Homearr));
+        if(away>0)
+        Arrays.sort(Awayarr);
+        //System.out.println(Arrays.toString(Awayarr));
+        if(home>0)
+        {
+          for(int i=Homearr.length-1;home>0;i--)
+          {
+            //System.out.println(Homearr[i]);
+           System.out.println(str[index[Homearr[i]]]);
+           home--;
+          }
+        }
+        if(away>0)
+        {
+          for(int i=Awayarr.length-1;away>0;i--)
+          {
+            //System.out.println(Awayarr[i]);
+           System.out.println(str[index[Awayarr[i]]]);
+           away--;
+          }
+        }
+      }
+      
+    }
+  }

@@ -1,0 +1,31 @@
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int t=sc.nextInt();
+      while(t-->0)
+      {
+      int n=sc.nextInt();
+      int count=0;
+      sc.nextLine();
+      String str=sc.nextLine();
+      //System.out.println(str);
+      char []arr=str.replaceAll("\\s","").toCharArray();
+      //System.out.println(arr.length);
+      for(int i=0;i<arr.length;i++)
+      {
+        if(arr[i]=='x'||(arr[i]=='X'))
+        {
+          count++;
+          
+        }
+      }
+       System.out.println(count);
+          
+      }
+      
+    }
+  }

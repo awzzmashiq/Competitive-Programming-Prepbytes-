@@ -1,0 +1,36 @@
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int t=sc.nextInt();
+      while(t-->0)
+      {
+        int n=sc.nextInt();
+        int []arr=new int[n];
+        for(int i=0;i<n;i++)
+        {
+          arr[i]=sc.nextInt();
+        }
+        int ans=findfirst(arr,0,n-1);
+        System.out.println(ans);
+      }
+      
+    }
+    public static int findfirst(int []arr,int start,int end)
+    {
+      int mid=start+(end-start)/2;
+      if(start>end)
+       return -1;
+      if((arr[mid]==1) && (mid==0 || arr[mid-1]==0))
+       return mid;
+      if(arr[mid]==0)
+      {
+       //start=mid+1;
+       return findfirst(arr,mid+1,end);
+      }
+      return findfirst(arr,start,mid-1);
+    }
+  }

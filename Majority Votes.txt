@@ -1,0 +1,41 @@
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int t=sc.nextInt();
+      while(t-->0)
+      {
+        int n=sc.nextInt();
+        int []a=new int[n];
+        for(int i=0;i<n;i++)
+         a[i]=sc.nextInt();
+        int major=0,count=1;
+        for(int i=1;i<n;i++)
+         {
+           if(a[major]==a[i])
+            count++;
+           else
+            count--;
+           if(count==0)
+            {
+              major=i;
+              count=1;
+            }
+         }
+         count=0;
+         for(int i=0;i<n;i++)
+         {
+           if(a[i]==a[major])
+            count++;
+         }
+         if(count>n/2)
+          System.out.println(a[major]);
+         else
+          System.out.println(-1);
+      }
+      
+    }
+  }

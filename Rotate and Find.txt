@@ -1,0 +1,67 @@
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int t=sc.nextInt();
+      while(t-->0)
+      {
+        int n=sc.nextInt();
+        int []a=new int[n];
+        for(int i=0;i<n;i++)
+         a[i]=sc.nextInt();
+        int key=sc.nextInt(); 
+        int ans=findKey(a,n,key);
+        System.out.println(ans);
+      }
+      
+    }
+    public static int findPivot(int []a,int start,int end)
+    {
+      
+      if(start>end)
+       return -1;
+      int mid=start+(end-start)/2;
+      if(mid<end && a[mid]>a[mid+1])
+       return mid+1;
+      if(mid>start && a[mid]<a[mid-1])
+       return mid;
+      if(a[start]>a[mid])
+       return findPivot(a,start,mid-1);
+       
+      return findPivot(a,mid+1,end); 
+       
+    }
+    public static int findKey(int []a,int n,int key)
+    {
+      int pivot=findPivot(a,0,n-1);
+      //System.out.println("Pivot= "+pivot);
+      if(a[pivot]==key)
+       return pivot;
+      if(pivot==-1)
+       return binarySearch(a,0,n-1,key);
+      if(a[0]<=key)
+       return binarySearch(a,0,pivot-1,key);
+      
+      return binarySearch(a,pivot+1,n-1,key);
+       
+    }
+    public static int binarySearch(int arr[], int l, int r, int x) 
+    { 
+        if (r >= l) { 
+            int mid = l + (r - l) / 2; 
+
+            if (arr[mid] == x) 
+                return mid; 
+  
+            if (arr[mid] > x) 
+                return binarySearch(arr, l, mid - 1, x); 
+  
+            return binarySearch(arr, mid + 1, r, x); 
+        } 
+  
+        return -1; 
+    } 
+  }

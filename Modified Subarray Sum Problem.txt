@@ -1,0 +1,60 @@
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int t=sc.nextInt();
+      long mod=1000000007;
+      while(t-->0)
+      {
+        int n=sc.nextInt();
+        int k=sc.nextInt();
+        int m=sc.nextInt();
+        int size=n*k;
+        int []a=new int[size];
+        for(int i=0;i<n;i++)
+         a[i]=sc.nextInt();
+        int j=n;
+        
+        while(k-->1)
+        {
+          for(int i=0;i<n;i++)
+          {
+           a[j++]=a[i];
+           //System.out.println(Arrays.toString(a));
+          }
+        }
+        //System.out.println(Arrays.toString(a));
+        long ans=noofsubarrsumlessthanM(a,size,m);
+        System.out.println(ans%mod);
+        
+      }
+      
+    }
+    public static int noofsubarrsumlessthanM(int []a,int n,int k)
+    {
+      int start=0,count=0,end=0,sum=a[0];
+      //System.out.println("k= "+k+"n= "+n);
+      while(start<n && end<n)
+      {
+        if(sum<=k)
+        {
+          end++;
+          //System.out.println(a[end]);
+          if(end>=start)
+           count=count+end-start;
+          if(end<n)
+           sum=sum+a[end];
+        }
+        else
+        {
+          sum=sum-a[start];
+          start++;
+        }
+      }
+      //System.out.println(count+ " "+sum);
+      return count;
+    }
+  }

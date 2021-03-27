@@ -1,0 +1,54 @@
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    static int max=1;
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int t=sc.nextInt();
+      while(t-->0)
+      {
+        int n=sc.nextInt();
+        int[]arr=new int[n];
+        for(int i=0;i<n;i++)
+          arr[i]=sc.nextInt();
+        sort(arr,0,arr.length-1);
+        System.out.println(max);
+        max=1;
+      }
+      
+    }
+    //static int max=1;
+    static void sort(int arr[],int first,int last)
+    {
+        int count=1;
+        //System.out.println("last "+last+" first "+first);
+        
+        if(last<=first)
+            {
+            return;
+            }
+        for(int i=first;i<last;i++)
+        {
+            if(i+1<arr.length && arr[i]<=arr[i+1])
+            {
+                count++;
+            }
+            else
+                break;
+        }
+        if(count==last-first+1 && max<count)
+            {
+            max=count;
+            //System.out.println(first+" "+last);
+            //System.out.println(max);
+            }    
+        
+        int mid=(first+last)/2;
+        //System.out.println("last "+last+" first "+first+" mid "+mid+" maxLen "+maxLen);
+        sort(arr,first,mid);
+        sort(arr,mid+1,last);
+        
+    }
+  }

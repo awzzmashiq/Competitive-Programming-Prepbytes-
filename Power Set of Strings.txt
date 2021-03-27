@@ -1,0 +1,32 @@
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      String str=sc.nextLine();
+      char []arr=str.toCharArray();
+      Arrays.sort(arr);
+      str=new String(arr);
+      String temp="";
+      powerset(str,temp,-1);
+    }
+     public static void powerset(String str,String temp,int index)
+     {
+       if(str.length()==index)
+       {
+         return;
+       }
+       if(temp.length()!=0)
+        System.out.println(temp);
+       //System.out.println(str.length());
+       
+       for(int i=index+1;i<str.length();i++)
+       {
+         temp=temp+str.charAt(i);
+         powerset(str,temp,i);
+         temp=temp.substring(0,temp.length()-1);//to remove last element in temp string
+       }
+     }
+  }

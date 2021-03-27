@@ -1,0 +1,72 @@
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int n=sc.nextInt();
+      long k=sc.nextInt();
+      long []a=new long[n];
+      int temp=0,temp1=0;
+      for(int i=0;i<n;i++)
+      {
+        a[i]=sc.nextLong();
+      }
+      int count=0,count1=0;
+      if(n==0){
+       System.out.println(0);
+       }
+      else{ 
+      if(a[0]<=k)
+      {
+        count=0;
+        for(int i=0;i<n;i++)
+       {
+        if(a[i]<=k)
+        {
+          count++;
+        }
+        else
+        {
+          break;
+        }
+       }
+       temp=n-count;
+       //System.out.println(temp);
+       //System.out.println(n-count);
+      }
+      if(a[n-1]<=k)
+      {
+        count1=0;
+        if(count!=n){
+        for(int i=n-1;i>=0;i--)
+        {
+          if(a[i]<=k)
+           count1++;
+          else
+           break;
+        }
+        temp1=n-count1-count;
+        }
+        if(count==n)
+        {
+          temp1=n-count;
+        }
+        //System.out.println(n-count1 +" "+temp1);
+        //System.out.println(n-count);
+      }
+      if(a[0]>k && a[n-1]>k)
+      {
+        System.out.println(n);
+      }
+      if(a[0]<=k && a[n-1]<=k)
+       System.out.println(temp1);
+      else if(a[0]<=k) 
+       System.out.println(temp);
+      else if(a[n-1]<=k) 
+       System.out.println(temp1); 
+      } 
+      
+    }
+  }

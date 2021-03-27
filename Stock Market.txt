@@ -1,0 +1,42 @@
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int t=sc.nextInt();
+      while(t-->0)
+      {
+        int n=sc.nextInt();
+        //ArrayList<Integer> a=new ArrayList<Integer>();
+        int []a=new int[n];
+        for(int i=0;i<n;i++)
+        {
+          a[i]=sc.nextInt();
+          //a.add(sc.nextInt());
+        }
+        if(n==1)
+        {
+          System.out.println(a[0]);
+          continue;
+          
+        }
+        else
+        {
+          long sum=0;
+          for(int i=1;i<n;i++)
+          {
+            //System.out.println(a.get(i)+ " "+a.get(n-1));
+            if(a[i]>a[i-1])
+            {
+              sum=sum+a[i]-a[i-1];
+              //System.out.println(sum+" ");
+            }
+          }
+          System.out.println(sum);
+        }
+      }
+      
+    }
+  }

@@ -1,0 +1,22 @@
+import java.util.*;
+import java.io.*;
+public class Main {
+  public static void main(String args[]) throws IOException {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int arr[] = new int[n];
+    int hash[] = new int[100001];
+    for(int i=0; i<n; i++){
+      arr[i] = sc.nextInt();
+      hash[arr[i]]++;    
+    }
+    int k = sc.nextInt();
+    
+    for(int i=0; i<100001; i++){
+      if(hash[i] == k){
+        System.out.print(i);
+        break;
+      } 
+    }
+  }
+}

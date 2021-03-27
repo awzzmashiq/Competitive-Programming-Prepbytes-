@@ -1,0 +1,30 @@
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int q=sc.nextInt();
+      while(q-->0)
+      {
+        int a=sc.nextInt();int b=sc.nextInt();int c=sc.nextInt();
+        int min;
+        if(a<b)
+         min=a;
+        else
+         min=b;
+        if(min<=c)
+         System.out.println(min);
+        else
+        {
+          int ans=(a+b+c)/3;
+          if(ans<min)
+           System.out.println(ans);
+          else
+           System.out.println(min);
+        }
+      }
+      
+    }
+  }

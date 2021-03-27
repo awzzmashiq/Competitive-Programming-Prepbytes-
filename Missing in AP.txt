@@ -1,0 +1,48 @@
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int t=sc.nextInt();
+      while(t-->0)
+      {
+        int n=sc.nextInt();
+        int []a=new int[n];
+        for(int i=0;i<n;i++)
+         a[i]=sc.nextInt();
+        int ldiff=a[1]-a[0];
+        int rdiff=a[n-1]-a[n-2];
+        int element=-1;
+        if(ldiff==rdiff)
+        {
+        element=missing(a,0,n-1,element,ldiff);
+        System.out.println(element);
+        continue;
+        }
+        if(ldiff<rdiff)
+         element=a[n-1]-ldiff;
+        else
+         element=a[0]+rdiff;
+        System.out.println(element);
+         
+      }
+      
+    }
+    public static int missing(int []a,int start,int end,int element,int diff)
+    {
+      if(start<=end)
+      {
+        int mid=start+(end-start)/2;
+        if(a[mid]==a[0]+mid*diff)
+         return missing(a,mid+1,end,element,diff);
+        else
+        {
+          element=a[0]+mid*diff;
+          return missing(a,start,mid-1,element,diff);
+        }
+      }
+      return element;
+    }
+  }
